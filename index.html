@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macroeconomic Dashboard: Cambodia - Verdant Rock</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Logo - appears on every tab -->
+        <div class="logo-container">
+            <div class="logo-placeholder">VERDANT ROCK</div>
+        </div>
+        
+        <!-- Tab Navigation -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="summary">Executive Summary</button>
+            <button class="tab-btn" data-tab="gdp">GDP & Output</button>
+            <button class="tab-btn" data-tab="inflation">Inflation</button>
+            <button class="tab-btn" data-tab="monetary">Monetary Policy</button>
+            <button class="tab-btn" data-tab="labor">Labor Market</button>
+            <button class="tab-btn" data-tab="fiscal">Fiscal Position</button>
+            <button class="tab-btn" data-tab="external">External Sector</button>
+            <button class="tab-btn" data-tab="financial">Financial Conditions</button>
+            <button class="tab-btn" data-tab="events">Recent Events</button>
+            <button class="tab-btn" data-tab="outlook">Economic Outlook</button>
+            <button class="tab-btn" data-tab="pros-cons">Pros & Cons</button>
+            <button class="tab-btn" data-tab="resilience">Resilience Score</button>
+            <button class="tab-btn" data-tab="disclaimer">Data Disclaimer</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Executive Summary -->
+            <div id="summary" class="tab-pane active">
+                <h1>Macroeconomic Dashboard: Cambodia</h1>
+                
+                <div class="charts-container">
+                    <div class="chart-grid-4">
+                        <div class="chart-item">
+                            <h3>Nominal GDP (USD Billions)</h3>
+                            <div class="chart-wrapper" style="position: relative; height: 300px;">
+                                <canvas id="gdpChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <h3>Real GDP Growth (%)</h3>
+                            <div class="chart-wrapper" style="position: relative; height: 300px;">
+                                <canvas id="growthChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <h3>Inflation Rate (%)</h3>
+                            <div class="chart-wrapper" style="position: relative; height: 300px;">
+                                <canvas id="inflationChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-item">
+                            <h3>Policy Interest Rate (%)</h3>
+                            <div class="chart-wrapper" style="position: relative; height: 300px;">
+                                <canvas id="policyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Executive Analysis</h2>
+                    <p>Cambodia's economy demonstrates remarkable resilience and sustained growth momentum, with nominal GDP reaching $45.5 billion in 2024, representing a recovery trajectory following the pandemic-induced contraction. The economy has maintained its structural transformation from agriculture toward manufacturing and services, driven primarily by robust domestic consumption and gradual recovery in external demand. Real GDP growth has stabilized at 5.5% in 2024, reflecting the economy's return to its pre-pandemic growth path of 6-7% annually, supported by strong fundamentals in the garment industry, tourism recovery, and expanding domestic markets.</p>
+                    
+                    <p>Inflation dynamics reveal Cambodia's exposure to global price pressures, particularly evident during 2022 when headline CPI peaked at 5.3% amid global commodity price surges. However, the National Bank of Cambodia's (NBC) prudent monetary stance and the economy's dollarized nature have contributed to price stability, with inflation moderating to 0.8% in 2024 - well below the informal 3% target threshold. Core inflation has similarly declined from its 2022 peak of 4.8% to 1.2% in 2024, indicating effective transmission of global disinflation and domestic supply-side improvements.</p>
+                    
+                    <p>The monetary policy framework remains accommodative, with the NBC maintaining the policy rate at 0.45%, reflecting confidence in price stability and support for economic growth. The low policy rate environment has facilitated credit expansion, though rising non-performing loan ratios to 7.9% signal emerging financial sector stress, particularly in real estate and small business lending. The dollarized economy limits conventional monetary policy tools but provides natural inflation anchoring through the dollar peg stability.</p>
+                    
+                    <p>Fiscal policy has demonstrated counter-cyclical effectiveness, with the deficit widening to 8.0% of GDP during 2020-2021 to support pandemic recovery before gradually consolidating to 3.0% in 2024. Government revenue collection has improved markedly, reaching 21.8% of GDP in 2024 from 18.5% in 2015, reflecting enhanced tax administration and economic formalization. Public debt remains sustainable at 26.6% of GDP, well below regional emerging market averages, providing fiscal space for future development investments and crisis response capabilities.</p>
+                </div>
+
+                <div class="timeline-section">
+                    <h2>Recent Significant Events</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">February 2024</div>
+                            <div class="timeline-content">
+                                <strong>Senate Elections:</strong> CPP wins 55 of 58 contested seats, Hun Sen becomes Senate President, ensuring political continuity and policy stability.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">August 2023</div>
+                            <div class="timeline-content">
+                                <strong>Leadership Transition:</strong> Hun Sen transfers power to son Hun Manet as Prime Minister, marking Cambodia's first peaceful succession since independence.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2020-2021</div>
+                            <div class="timeline-content">
+                                <strong>COVID-19 Pandemic:</strong> Economy contracts 3.1% in 2020, first recession in 25 years, followed by gradual recovery with targeted fiscal stimulus.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">April 2017</div>
+                            <div class="timeline-content">
+                                <strong>Interest Rate Cap Policy:</strong> NBC implements 18% annual cap on microfinance lending rates to protect borrowers and ensure sustainable credit growth.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024-2025</div>
+                            <div class="timeline-content">
+                                <strong>Rising NPLs:</strong> Banking sector NPL ratio rises to 7.9%, reflecting real estate sector weakness and small business credit stress.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar-section">
+                    <h2>Upcoming Events Calendar</h2>
+                    <div class="calendar-grid">
+                        <div class="calendar-item">
+                            <div class="calendar-date">Jan 15, 2025</div>
+                            <div class="calendar-event">Q4 2024 GDP Release</div>
+                        </div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">Feb 10, 2025</div>
+                            <div class="calendar-event">NBC Monetary Policy Meeting</div>
+                        </div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">Feb 28, 2025</div>
+                            <div class="calendar-event">January Inflation Data</div>
+                        </div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">Mar 15, 2025</div>
+                            <div class="calendar-event">Trade Balance Report</div>
+                        </div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">Apr 20, 2025</div>
+                            <div class="calendar-event">Fiscal Budget Review</div>
+                        </div>
+                        <div class="calendar-item">
+                            <div class="calendar-date">May 5, 2025</div>
+                            <div class="calendar-event">NBC Financial Stability Report</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GDP and Economic Output -->
+            <div id="gdp" class="tab-pane">
+                <h1>GDP and Economic Output</h1>
+                
+                <div class="charts-container">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1b3e9eeb381787aafc8663ca96b59d93/c56d2e76-5ba2-4c73-aa76-4826b702a2f4/eb2f58ba.png" alt="Cambodia GDP Composition" class="chart-image">
+                </div>
+
+                <div class="data-tables">
+                    <h2>Annual GDP Data (2015-2024)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                                <th>2020</th>
+                                <th>2021</th>
+                                <th>2022</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nominal GDP (USD Billion)</strong></td>
+                                <td>20.0</td>
+                                <td>22.2</td>
+                                <td>24.6</td>
+                                <td>27.1</td>
+                                <td>36.7</td>
+                                <td>34.8</td>
+                                <td>36.8</td>
+                                <td>40.0</td>
+                                <td>42.3</td>
+                                <td>45.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Real GDP Growth (%)</strong></td>
+                                <td>7.0</td>
+                                <td>6.9</td>
+                                <td>7.0</td>
+                                <td>7.5</td>
+                                <td>7.1</td>
+                                <td>-3.1</td>
+                                <td>3.0</td>
+                                <td>5.2</td>
+                                <td>5.0</td>
+                                <td>5.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GDP Per Capita (USD)</strong></td>
+                                <td>1,247</td>
+                                <td>1,384</td>
+                                <td>1,543</td>
+                                <td>1,703</td>
+                                <td>2,299</td>
+                                <td>2,185</td>
+                                <td>2,314</td>
+                                <td>2,523</td>
+                                <td>2,673</td>
+                                <td>2,850</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>GDP Analysis</h2>
+                    <p>Cambodia's GDP trajectory demonstrates exceptional resilience and structural transformation over the past decade. Nominal GDP has more than doubled from $20.0 billion in 2015 to $45.5 billion in 2024, representing a compound annual growth rate of approximately 9.5%. This expansion reflects both robust real economic activity and moderate inflation, with per capita income rising from $1,247 to $2,850, indicating meaningful improvements in living standards despite population growth.</p>
+                    
+                    <p>The 2020 contraction of 3.1% marked Cambodia's first recession in 25 years, primarily driven by tourism sector collapse and global supply chain disruptions. However, the economy's recovery has been swift and broad-based, with growth returning to 5.5% in 2024, approaching the pre-pandemic average of 6-7%. The National Bank of Cambodia's estimates suggest the economy has regained its pre-pandemic output levels, supported by manufacturing export resilience and domestic consumption strength.</p>
+                    
+                    <p>Sectoral composition analysis reveals Cambodia's continued structural transformation toward higher value-added activities. Manufacturing, particularly garments and footwear, continues to dominate exports, while services sector growth has been supported by financial services expansion and digital economy development. The agricultural sector's GDP share has gradually declined while maintaining food security, reflecting successful economic diversification strategies outlined in the Rectangular Strategy framework.</p>
+                    
+                    <p>Looking ahead, the Ministry of Economy and Finance projects sustained GDP growth supported by infrastructure investments under the National Strategic Development Plan, export competitiveness improvements, and tourism sector normalization. The economy's demonstrated ability to maintain growth momentum despite external shocks underscores the effectiveness of macroeconomic policy coordination and structural reform implementation.</p>
+                </div>
+            </div>
+
+            <!-- Inflation and Price Trends -->
+            <div id="inflation" class="tab-pane">
+                <h1>Inflation and Price Trends</h1>
+                
+                <div class="charts-container">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1b3e9eeb381787aafc8663ca96b59d93/75e90387-f48d-4a70-8891-6b44dabeb03b/ce7faf9e.png" alt="Cambodia Inflation Trends" class="chart-image">
+                </div>
+
+                <div class="data-tables">
+                    <h2>Annual Inflation Data (2015-2024)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                                <th>2020</th>
+                                <th>2021</th>
+                                <th>2022</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Headline CPI (%)</strong></td>
+                                <td>1.2</td>
+                                <td>3.0</td>
+                                <td>2.9</td>
+                                <td>2.5</td>
+                                <td>1.9</td>
+                                <td>2.9</td>
+                                <td>2.9</td>
+                                <td>5.3</td>
+                                <td>2.1</td>
+                                <td>0.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Core CPI (%)</strong></td>
+                                <td>1.0</td>
+                                <td>2.8</td>
+                                <td>2.7</td>
+                                <td>2.3</td>
+                                <td>1.7</td>
+                                <td>2.5</td>
+                                <td>2.6</td>
+                                <td>4.8</td>
+                                <td>1.8</td>
+                                <td>1.2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Target Rate (%)</strong></td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Inflation Analysis</h2>
+                    <p>Cambodia's inflation dynamics over the past decade reflect the economy's high degree of integration with global commodity markets and the stabilizing influence of dollarization. Headline inflation has remained generally subdued, averaging 2.6% annually from 2015-2024, with the notable exception of the 2022 surge to 5.3% driven primarily by global energy and food price shocks following geopolitical tensions and pandemic-related supply disruptions.</p>
+                    
+                    <p>The 2022 inflation spike represented the highest level in over a decade, with core inflation reaching 4.8%, indicating broad-based price pressures beyond volatile food and energy components. However, the rapid disinflation observed in 2023-2024, with headline inflation falling to 0.8%, demonstrates the economy's quick adjustment to global price normalization and the effectiveness of supply-side policy interventions, including strategic petroleum reserve releases and agricultural productivity improvements.</p>
+                    
+                    <p>Cambodia's dollarized economy provides natural inflation anchoring through the stable exchange rate regime, with approximately 90% of bank deposits held in US dollars. This monetary framework limits domestic inflation volatility but creates exposure to imported inflation during periods of global price pressures. The National Bank of Cambodia's informal inflation target of around 3% has generally been achieved, with deviations primarily reflecting external commodity price shocks rather than domestic demand pressures.</p>
+                    
+                    <p>Looking forward, inflation expectations remain well-anchored near the informal target, supported by stable dollarization, prudent fiscal policy, and supply-side structural reforms. The NBC's latest monetary policy statements emphasize continued focus on price stability while supporting economic growth, with particular attention to monitoring potential inflationary pressures from infrastructure investment scaling and regional economic integration deepening.</p>
+                </div>
+            </div>
+
+            <!-- Monetary Policy Analysis -->
+            <div id="monetary" class="tab-pane">
+                <h1>Monetary Policy Analysis</h1>
+                
+                <div class="policy-snapshot">
+                    <h2>Current Policy Snapshot</h2>
+                    <div class="metric-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">Current Policy Rate</div>
+                            <div class="metric-value">0.45%</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Last Policy Change</div>
+                            <div class="metric-value">March 2020 - Rate Cut</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Real Interest Rate</div>
+                            <div class="metric-value">-0.35%</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Exchange Rate Regime</div>
+                            <div class="metric-value">Managed Float</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Monetary Policy Stance</h2>
+                    <p>Cambodia's monetary policy framework operates within a unique institutional structure characterized by high dollarization and a managed exchange rate regime. The National Bank of Cambodia (NBC) maintains the policy rate at 0.45%, unchanged since the pandemic-era easing in March 2020, reflecting confidence in price stability and commitment to supporting economic recovery. The ultra-low policy rate environment has facilitated credit expansion and investment financing while maintaining financial stability.</p>
+                    
+                    <p>The NBC's monetary policy transmission mechanism operates primarily through the banking sector and exchange rate channel, with limited effectiveness of conventional interest rate policy due to extensive dollarization. Approximately 90% of bank deposits and 85% of loans are denominated in US dollars, making exchange rate stability a critical policy objective. The central bank's foreign exchange interventions and reserve management have successfully maintained KHR/USD stability around 4,010-4,100 range.</p>
+                    
+                    <p>Forward guidance from NBC Governor Chea Serey emphasizes a cautious approach to policy normalization, with any rate adjustments contingent on sustained economic growth momentum and inflation remaining near target. The central bank's latest monetary policy statement highlights growing attention to financial stability risks, particularly rising non-performing loans in the banking sector, while maintaining support for credit growth to productive sectors.</p>
+                    
+                    <p>Liquidity management operations focus on ensuring adequate banking system liquidity while preventing excessive credit growth that could fuel asset price bubbles. The NBC's introduction of macroprudential tools, including loan-to-value ratios for real estate lending and enhanced supervision of microfinance institutions, reflects evolving policy priorities toward financial stability alongside traditional price stability objectives.</p>
+                </div>
+            </div>
+
+            <!-- Labor Market Dynamics -->
+            <div id="labor" class="tab-pane">
+                <h1>Labor Market Dynamics</h1>
+                
+                <div class="charts-container">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1b3e9eeb381787aafc8663ca96b59d93/618747cd-53d0-49e7-826f-187d5697def8/18f80f66.png" alt="Cambodia Labor Market" class="chart-image">
+                </div>
+
+                <div class="data-tables">
+                    <h2>Annual Labor Market Data (2015-2024)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                                <th>2020</th>
+                                <th>2021</th>
+                                <th>2022</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Unemployment Rate (%)</strong></td>
+                                <td>0.3</td>
+                                <td>0.2</td>
+                                <td>0.2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
+                                <td>0.2</td>
+                                <td>0.4</td>
+                                <td>0.2</td>
+                                <td>0.2</td>
+                                <td>0.3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Labor Participation (%)</strong></td>
+                                <td>83.1</td>
+                                <td>83.5</td>
+                                <td>84.2</td>
+                                <td>84.8</td>
+                                <td>85.2</td>
+                                <td>85.4</td>
+                                <td>84.1</td>
+                                <td>83.8</td>
+                                <td>84.2</td>
+                                <td>84.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Employment Ratio (%)</strong></td>
+                                <td>82.8</td>
+                                <td>83.3</td>
+                                <td>84.0</td>
+                                <td>84.7</td>
+                                <td>85.1</td>
+                                <td>85.2</td>
+                                <td>83.7</td>
+                                <td>83.6</td>
+                                <td>84.0</td>
+                                <td>84.2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Labor Market Analysis</h2>
+                    <p>Cambodia's labor market exhibits unique characteristics reflecting the predominance of agricultural and informal sector employment. The unemployment rate remains exceptionally low at 0.3% in 2024, consistent with historical patterns where unemployment rarely exceeds 0.5%. This reflects the economy's structural composition, where subsistence agriculture and family-based economic activities provide widespread employment opportunities, though often at low productivity levels.</p>
+                    
+                    <p>Labor force participation has remained consistently high at 84.5% in 2024, among the highest globally, indicating widespread economic necessity and cultural patterns of work participation. The temporary decline during 2021-2022 to 83.8% reflected pandemic-related disruptions, particularly in tourism and manufacturing sectors, but has since recovered to pre-pandemic levels. The high participation rate encompasses both formal and informal sector workers, with women's participation particularly high in rural agricultural activities.</p>
+                    
+                    <p>Employment-to-population ratio of 84.2% confirms the structural pattern of high employment but raises questions about job quality and productivity. The Ministry of Labor's latest surveys indicate that approximately 65% of employment remains in agriculture, with manufacturing (primarily garments) employing about 15% of the workforce. Wage growth has been modest, with average monthly wages in manufacturing rising to approximately $190-200, while agricultural wages remain significantly lower.</p>
+                    
+                    <p>Demographic trends present both opportunities and challenges, with approximately 65% of the population under 30 years old creating pressure for formal sector job creation. The government's Technical and Vocational Education Training (TVET) programs aim to enhance workforce skills for higher value-added sectors, while ongoing industrialization and service sector development offer pathways for employment quality improvements beyond traditional agriculture-based livelihoods.</p>
+                </div>
+            </div>
+
+            <!-- Fiscal Position and Debt -->
+            <div id="fiscal" class="tab-pane">
+                <h1>Fiscal Position and Debt</h1>
+                
+                <div class="charts-container">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/1b3e9eeb381787aafc8663ca96b59d93/cba70de1-4976-427f-9e2f-881a14ca190b/a0a30ad8.png" alt="Cambodia Fiscal Analysis" class="chart-image">
+                </div>
+
+                <div class="data-tables">
+                    <h2>Annual Fiscal Data (2015-2024)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                                <th>2020</th>
+                                <th>2021</th>
+                                <th>2022</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Revenue (% GDP)</strong></td>
+                                <td>18.5</td>
+                                <td>19.2</td>
+                                <td>20.1</td>
+                                <td>21.2</td>
+                                <td>22.8</td>
+                                <td>20.1</td>
+                                <td>19.8</td>
+                                <td>20.5</td>
+                                <td>21.2</td>
+                                <td>21.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expenditure (% GDP)</strong></td>
+                                <td>20.2</td>
+                                <td>21.1</td>
+                                <td>21.8</td>
+                                <td>22.5</td>
+                                <td>24.3</td>
+                                <td>28.1</td>
+                                <td>26.8</td>
+                                <td>23.2</td>
+                                <td>24.6</td>
+                                <td>24.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fiscal Balance (% GDP)</strong></td>
+                                <td>-1.7</td>
+                                <td>-1.9</td>
+                                <td>-1.7</td>
+                                <td>-1.3</td>
+                                <td>-1.5</td>
+                                <td>-8.0</td>
+                                <td>-7.0</td>
+                                <td>-2.7</td>
+                                <td>-3.4</td>
+                                <td>-3.0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Public Debt (% GDP)</strong></td>
+                                <td>31.5</td>
+                                <td>29.8</td>
+                                <td>28.5</td>
+                                <td>24.8</td>
+                                <td>20.8</td>
+                                <td>24.3</td>
+                                <td>25.1</td>
+                                <td>25.3</td>
+                                <td>25.7</td>
+                                <td>26.6</td>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Fiscal Analysis</h2>
+                    <p>Cambodia's fiscal position demonstrates prudent management and strong revenue mobilization capacity, with government revenue rising from 18.5% of GDP in 2015 to 21.8% in 2024. This improvement reflects successful tax administration reforms, enhanced compliance mechanisms, and economic formalization progress. The General Department of Taxation's digitization initiatives and customs modernization have contributed significantly to revenue performance, with VAT and corporate income tax collections showing particular strength.</p>
+                    
+                    <p>The pandemic period revealed Cambodia's fiscal policy effectiveness, with the deficit widening to 8.0% of GDP in 2020 and 7.0% in 2021 to support economic recovery through targeted stimulus measures. Government expenditure surged to 28.1% of GDP in 2020, primarily for healthcare system strengthening, business support programs, and unemployment assistance. The subsequent fiscal consolidation to 3.0% deficit in 2024 indicates disciplined policy normalization while maintaining development spending priorities.</p>
+                    
+                    <p>Public debt sustainability remains robust at 26.6% of GDP in 2024, well below the government's internal ceiling of 35% and significantly lower than regional emerging market averages. The debt reduction from 31.5% of GDP in 2015 to current levels demonstrates effective debt management, supported by strong GDP growth and limited external borrowing needs. The Ministry of Economy and Finance's debt management strategy emphasizes concessional financing sources and infrastructure investment prioritization.</p>
+                    
+                    <p>Looking ahead, fiscal policy priorities focus on maintaining revenue mobilization momentum through continued tax system modernization while scaling infrastructure investments under the National Strategic Development Plan. The government's medium-term fiscal framework targets deficit stabilization around 3% of GDP, with debt ratios remaining well within sustainable ranges. Development partner financing continues to support priority sector investments, particularly in education, healthcare, and climate resilience infrastructure.</p>
+                </div>
+            </div>
+
+            <!-- External Sector Analysis -->
+            <div id="external" class="tab-pane">
+                <h1>External Sector Analysis</h1>
+                
+                <div class="charts-container">
+                    <div class="chart-wrapper" style="position: relative; height: 400px;">
+                        <canvas id="externalChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="data-tables">
+                    <h2>Annual External Sector Data (2015-2024)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2015</th>
+                                <th>2016</th>
+                                <th>2017</th>
+                                <th>2018</th>
+                                <th>2019</th>
+                                <th>2020</th>
+                                <th>2021</th>
+                                <th>2022</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Current Account (% GDP)</strong></td>
+                                <td>-9.5</td>
+                                <td>-8.8</td>
+                                <td>-7.8</td>
+                                <td>-12.2</td>
+                                <td>-17.8</td>
+                                <td>-2.4</td>
+                                <td>-11.2</td>
+                                <td>-14.5</td>
+                                <td>1.3</td>
+                                <td>-1.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FX Reserves (USD Billion)</strong></td>
+                                <td>7.0</td>
+                                <td>9.1</td>
+                                <td>12.2</td>
+                                <td>14.2</td>
+                                <td>18.2</td>
+                                <td>18.4</td>
+                                <td>18.2</td>
+                                <td>18.1</td>
+                                <td>18.3</td>
+                                <td>18.3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exchange Rate (KHR/USD)</strong></td>
+                                <td>4,067</td>
+                                <td>4,058</td>
+                                <td>4,035</td>
+                                <td>4,051</td>
+                                <td>4,061</td>
+                                <td>4,092</td>
+                                <td>4,045</td>
+                                <td>4,098</td>
+                                <td>4,020</td>
+                                <td>4,010</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>External Sector Analysis</h2>
+                    <p>Cambodia's external sector reflects the economy's integration into global value chains and dependence on export-oriented manufacturing and tourism. The current account balance has been volatile, ranging from surpluses of 1.3% of GDP in 2023 to deficits exceeding 17% in 2019. The 2023 surplus represented exceptional performance driven by import compression and resilient export performance, while the return to deficit in 2024 at 1.8% of GDP indicates normalization of trade patterns and domestic demand recovery.</p>
+                    
+                    <p>Foreign exchange reserves have stabilized at $18.3 billion, equivalent to approximately 4.5 months of imports, providing adequate buffer against external shocks. Reserve accumulation from $7.0 billion in 2015 demonstrates the National Bank of Cambodia's successful external stability management, supported by export earnings, foreign direct investment inflows, and development partner financing. The stable reserve levels since 2019 reflect balanced foreign exchange market conditions and effective intervention policies.</p>
+                    
+                    <p>Exchange rate stability has been a cornerstone of macroeconomic management, with KHR/USD fluctuating within a narrow 4,010-4,100 range over the past decade. The managed float regime has provided confidence for dollarized economic transactions while maintaining competitiveness for export sectors. Recent KHR strengthening to 4,010 in 2024 reflects improved external fundamentals and continued confidence in Cambodia's economic management.</p>
+                    
+                    <p>Trade dynamics are dominated by garment and footwear exports, accounting for approximately 60% of merchandise exports, primarily to U.S. and European markets. Tourism sector recovery has gradually improved services exports, while import demand reflects both consumption goods and capital equipment for infrastructure development. The government's export diversification strategy emphasizes agricultural value-added products, electronics assembly, and tourism service expansion to reduce external vulnerability to sector-specific shocks.</p>
+                </div>
+            </div>
+
+            <!-- Financial Conditions -->
+            <div id="financial" class="tab-pane">
+                <h1>Financial Conditions</h1>
+                
+                <div class="financial-metrics">
+                    <h2>Latest Financial Indicators</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Indicator</th>
+                                <th>Current Value</th>
+                                <th>Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Credit-to-GDP Gap (%)</strong></td>
+                                <td>35.2%</td>
+                                <td class="status-warning">Elevated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bank NPL Ratio (%)</strong></td>
+                                <td>7.9%</td>
+                                <td class="status-warning">Rising</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MFI NPL Ratio (%)</strong></td>
+                                <td>9.0%</td>
+                                <td class="status-error">High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Credit Growth (%)</strong></td>
+                                <td>3.0%</td>
+                                <td class="status-info">Moderate</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deposit Growth (%)</strong></td>
+                                <td>16.3%</td>
+                                <td class="status-success">Strong</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Housing Price Change (%)</strong></td>
+                                <td>-2.2%</td>
+                                <td class="status-warning">Declining</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Financial System Assessment</h2>
+                    <p>Cambodia's financial system faces emerging stress signals despite overall stability, with rising non-performing loan ratios indicating asset quality deterioration across both banking and microfinance sectors. The bank NPL ratio has increased to 7.9% in 2024, while microfinance institutions report even higher stress at 9.0%, reflecting particular weakness in small business and agriculture-related lending portfolios. These trends suggest the financial sector is experiencing delayed impacts from pandemic-related economic disruptions and structural adjustments.</p>
+                    
+                    <p>Credit market conditions show mixed signals, with overall credit growth moderating to 3.0% annually, down from historical averages of 15-20%. This deceleration reflects both supply-side tightening due to NPL concerns and demand-side weakness as businesses and households adopt cautious borrowing approaches. However, deposit growth remains robust at 16.3%, indicating continued confidence in the banking system and providing adequate funding for future credit expansion when conditions improve.</p>
+                    
+                    <p>The real estate sector adjustment is evidenced by housing price declines of 2.2%, particularly affecting urban commercial and residential property markets. Oversupply in certain segments and reduced foreign investment have contributed to price corrections, creating potential stress for real estate-secured lending portfolios. The National Bank of Cambodia's enhanced supervision of real estate lending and loan-to-value requirements aim to prevent systemic risks from property market volatility.</p>
+                    
+                    <p>Financial system resilience is supported by adequate capitalization levels across major banks, with capital adequacy ratios averaging 18-20%, well above regulatory minimums. The NBC's stress testing exercises indicate the system can withstand moderate adverse scenarios, though continued monitoring of asset quality trends and implementation of early intervention measures remain crucial for maintaining stability during the current adjustment period.</p>
+                </div>
+            </div>
+
+            <!-- Recent Events & Calendar -->
+            <div id="events" class="tab-pane">
+                <h1>Recent Events & Economic Calendar</h1>
+                
+                <div class="events-timeline">
+                    <h2>Major Economic and Political Events (2020-2025)</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">February 2024</div>
+                            <div class="timeline-content">
+                                <strong>Senate Elections - Political Continuity:</strong> Cambodian People's Party (CPP) secures 55 of 58 contested Senate seats, with Hun Sen assuming the Senate Presidency, ensuring policy continuity and political stability for economic reforms.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">August 2023</div>
+                            <div class="timeline-content">
+                                <strong>Leadership Transition - Generational Change:</strong> Hun Sen transfers Prime Ministerial authority to son Hun Manet, marking Cambodia's first peaceful leadership succession since independence and signaling policy modernization focus.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2022-2023</div>
+                            <div class="timeline-content">
+                                <strong>Global Inflation Transmission:</strong> Cambodia experiences imported inflation peak of 5.3% in 2022 due to global commodity price surges, followed by rapid disinflation to 0.8% by 2024 through policy coordination.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2020-2021</div>
+                            <div class="timeline-content">
+                                <strong>COVID-19 Economic Impact:</strong> First recession in 25 years with GDP contracting 3.1% in 2020, prompting unprecedented fiscal stimulus and monetary accommodation, followed by swift V-shaped recovery.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">April 2017</div>
+                            <div class="timeline-content">
+                                <strong>Microfinance Interest Rate Cap:</strong> National Bank of Cambodia implements 18% annual interest rate ceiling on microfinance lending to protect borrowers and ensure sustainable sector development.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upcoming-calendar">
+                    <h2>Upcoming Economic Calendar 2025</h2>
+                    <div class="calendar-grid">
+                        <div class="calendar-month">
+                            <h3>January 2025</h3>
+                            <div class="calendar-events">
+                                <div class="calendar-event">
+                                    <span class="event-date">Jan 15</span>
+                                    <span class="event-title">Q4 2024 GDP Release</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Jan 20</span>
+                                    <span class="event-title">December 2024 Inflation Data</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Jan 25</span>
+                                    <span class="event-title">NBC Financial Stability Review</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendar-month">
+                            <h3>February 2025</h3>
+                            <div class="calendar-events">
+                                <div class="calendar-event">
+                                    <span class="event-date">Feb 10</span>
+                                    <span class="event-title">NBC Monetary Policy Meeting</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Feb 20</span>
+                                    <span class="event-title">January Trade Statistics</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Feb 28</span>
+                                    <span class="event-title">January Inflation Report</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendar-month">
+                            <h3>March 2025</h3>
+                            <div class="calendar-events">
+                                <div class="calendar-event">
+                                    <span class="event-date">Mar 15</span>
+                                    <span class="event-title">Q1 2025 Preliminary GDP</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Mar 20</span>
+                                    <span class="event-title">Banking Sector Report</span>
+                                </div>
+                                <div class="calendar-event">
+                                    <span class="event-date">Mar 31</span>
+                                    <span class="event-title">Fiscal Q1 Budget Review</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Outlook -->
+            <div id="outlook" class="tab-pane">
+                <h1>Economic Outlook</h1>
+                
+                <div class="projections-table">
+                    <h2>Growth Projections</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Indicator</th>
+                                <th>2024 (Actual)</th>
+                                <th>2025 (Forecast)</th>
+                                <th>2026 (Forecast)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Real GDP Growth (%)</strong></td>
+                                <td>5.5</td>
+                                <td>5.8</td>
+                                <td>6.0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inflation Rate (%)</strong></td>
+                                <td>0.8</td>
+                                <td>2.0</td>
+                                <td>2.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Current Account (% GDP)</strong></td>
+                                <td>-1.8</td>
+                                <td>-3.5</td>
+                                <td>-4.2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fiscal Balance (% GDP)</strong></td>
+                                <td>-3.0</td>
+                                <td>-3.2</td>
+                                <td>-2.8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="risk-assessment">
+                    <h2>Risk Assessment</h2>
+                    <div class="risk-grid">
+                        <div class="risk-category">
+                            <h3>Upside Risks</h3>
+                            <ul>
+                                <li>Tourism sector recovery exceeding expectations</li>
+                                <li>Infrastructure investment multiplier effects</li>
+                                <li>Export diversification success</li>
+                                <li>Regional integration benefits</li>
+                            </ul>
+                        </div>
+                        <div class="risk-category">
+                            <h3>Downside Risks</h3>
+                            <ul>
+                                <li>Financial sector NPL deterioration</li>
+                                <li>Global trade slowdown impact</li>
+                                <li>Real estate sector adjustment</li>
+                                <li>Climate-related disruptions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Economic Outlook Assessment</h2>
+                    <p>Cambodia's economic outlook remains constructive with projected GDP growth acceleration to 5.8% in 2025 and 6.0% in 2026, approaching pre-pandemic growth rates. This optimistic trajectory is supported by infrastructure investment scaling under the National Strategic Development Plan, tourism sector normalization, and export sector competitiveness improvements. The government's focus on economic diversification and digital transformation initiatives provides additional growth momentum beyond traditional manufacturing and agriculture sectors.</p>
+                    
+                    <p>However, financial sector vulnerabilities and external dependencies present notable risks to the growth outlook. Rising NPL ratios across banking and microfinance institutions could constrain credit availability and slow private investment if not adequately addressed through enhanced supervision and resolution mechanisms. Additionally, Cambodia's export concentration in garments and dependence on major market conditions in the U.S. and Europe create external vulnerability, though export diversification efforts and regional integration under RCEP provide some offset to these concerns.</p>
+                </div>
+            </div>
+
+            <!-- Pros & Cons -->
+            <div id="pros-cons" class="tab-pane">
+                <h1>Economic Strengths & Vulnerabilities</h1>
+                
+                <div class="pros-cons-grid">
+                    <div class="pros-section">
+                        <h2>Economic Strengths</h2>
+                        <ul class="strength-list">
+                            <li><strong>Sustainable Public Finances:</strong> Public debt at 26.6% of GDP remains well below regional averages and government fiscal targets, providing significant policy space.</li>
+                            <li><strong>Adequate External Buffers:</strong> Foreign exchange reserves cover 4.5 months of imports, exceeding IMF adequacy benchmarks for emerging economies.</li>
+                            <li><strong>Strong Revenue Mobilization:</strong> Government revenue increased from 18.5% to 21.8% of GDP (2015-2024), demonstrating effective tax administration modernization.</li>
+                            <li><strong>Exchange Rate Stability:</strong> KHR/USD maintained within 4,010-4,100 range over past decade, supporting economic predictability and investment confidence.</li>
+                            <li><strong>High Labor Force Utilization:</strong> Labor force participation rate of 84.5% and employment-to-population ratio of 84.2% indicate widespread economic engagement.</li>
+                            <li><strong>Inflation Anchoring:</strong> Dollarization provides natural inflation stability, with headline CPI averaging 2.6% over past decade despite external shocks.</li>
+                            <li><strong>Growth Resilience:</strong> Economy recovered to 5.5% growth in 2024 following pandemic contraction, demonstrating structural economic flexibility.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cons-section">
+                        <h2>Economic Vulnerabilities</h2>
+                        <ul class="weakness-list">
+                            <li><strong>Rising Financial Sector Stress:</strong> Bank NPL ratio increased to 7.9% and MFI NPL ratio to 9.0%, indicating emerging asset quality deterioration.</li>
+                            <li><strong>Elevated Credit Gap:</strong> Credit-to-GDP gap at 35.2% suggests potential overextension in lending relative to economic fundamentals.</li>
+                            <li><strong>Export Concentration Risk:</strong> Garment and footwear exports represent approximately 60% of merchandise exports, creating vulnerability to sector-specific shocks.</li>
+                            <li><strong>Real Estate Market Adjustment:</strong> Housing prices declining 2.2% annually, potentially affecting construction sector and property-secured lending portfolios.</li>
+                            <li><strong>Low Productivity Employment:</strong> Despite high employment ratios, approximately 65% of workforce remains in low-productivity agricultural activities.</li>
+                            <li><strong>Structural Current Account Deficits:</strong> Historical pattern of current account deficits averaging 8-10% of GDP reflects import dependence and savings-investment gaps.</li>
+                            <li><strong>Limited Monetary Policy Flexibility:</strong> High dollarization constrains conventional monetary policy effectiveness and domestic financial market development.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resilience Score & Rating -->
+            <div id="resilience" class="tab-pane">
+                <h1>Macroeconomic Resilience Assessment</h1>
+                
+                <div class="resilience-score">
+                    <div class="score-display">
+                        <div class="score-number">3.5</div>
+                        <div class="score-label">Macro Resilience Rating</div>
+                        <div class="score-scale">(Scale: 1.0 - 5.0)</div>
+                    </div>
+                </div>
+
+                <div class="scoring-breakdown">
+                    <h2>Rating Components</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Score</th>
+                                <th>Weight</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Fiscal Position</strong></td>
+                                <td>4.5</td>
+                                <td>25%</td>
+                                <td>Low debt-to-GDP (26.6%), strong revenue growth, manageable deficit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>External Stability</strong></td>
+                                <td>3.5</td>
+                                <td>20%</td>
+                                <td>Adequate reserves, exchange rate stability, but current account volatility</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monetary Framework</strong></td>
+                                <td>3.0</td>
+                                <td>15%</td>
+                                <td>Price stability achieved, but limited policy flexibility due to dollarization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Financial Sector</strong></td>
+                                <td>2.5</td>
+                                <td>20%</td>
+                                <td>Rising NPLs, elevated credit gap, real estate sector stress</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Growth Sustainability</strong></td>
+                                <td>4.0</td>
+                                <td>20%</td>
+                                <td>Consistent growth recovery, structural transformation progress</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Resilience Assessment</h2>
+                    <p>Cambodia's macroeconomic resilience rating of 3.5 reflects a balanced assessment of robust fiscal fundamentals and growth momentum offset by emerging financial sector vulnerabilities. The economy demonstrates strong structural resilience through its rapid recovery from the pandemic contraction and maintenance of price stability despite global inflationary pressures. Fiscal discipline and debt sustainability provide significant policy space for counter-cyclical responses to future shocks, while external stability indicators suggest adequate buffers against short-term volatility.</p>
+                    
+                    <p>However, rising financial sector stress and structural dependencies limit overall resilience. The banking sector's asset quality deterioration and elevated credit-to-GDP gap indicate potential vulnerabilities that could amplify future economic shocks. Export concentration in garments and limited monetary policy flexibility due to dollarization create additional structural constraints. Nevertheless, Cambodia's demonstrated policy effectiveness, institutional stability, and growth potential support a moderately positive resilience assessment, positioning the economy to navigate near-term challenges while pursuing medium-term development objectives.</p>
+                </div>
+            </div>
+
+            <!-- Data Disclaimer -->
+            <div id="disclaimer" class="tab-pane">
+                <h1>Data Sources & Disclaimer</h1>
+                
+                <div class="data-sources">
+                    <h2>Data Sources</h2>
+                    <ul class="source-list">
+                        <li><strong>GDP and Growth Data:</strong> National Institute of Statistics (NIS) Cambodia, World Bank World Development Indicators</li>
+                        <li><strong>Inflation and Price Data:</strong> National Institute of Statistics (NIS) Cambodia, National Bank of Cambodia</li>
+                        <li><strong>Monetary Policy Data:</strong> National Bank of Cambodia (NBC) Monetary Policy Statements and Statistical Bulletins</li>
+                        <li><strong>Labor Market Data:</strong> Ministry of Labor and Vocational Training, International Labour Organization (ILO)</li>
+                        <li><strong>Fiscal Data:</strong> Ministry of Economy and Finance, IMF Article IV Reports</li>
+                        <li><strong>External Sector Data:</strong> National Bank of Cambodia Balance of Payments Statistics, World Bank</li>
+                        <li><strong>Financial Sector Data:</strong> National Bank of Cambodia Banking Supervision Reports, IMF Financial Sector Assessment</li>
+                    </ul>
+                </div>
+
+                <div class="data-notes">
+                    <h2>Data Methodology Notes</h2>
+                    <ul>
+                        <li>All GDP figures are presented in nominal US dollar terms unless otherwise specified</li>
+                        <li>Real GDP growth rates are calculated using constant 2015 prices</li>
+                        <li>Inflation data reflects year-over-year percentage changes in Consumer Price Index</li>
+                        <li>Labor market statistics may differ from other sources due to methodology differences in informal sector coverage</li>
+                        <li>Fiscal data represents central government finances and may exclude local government operations</li>
+                        <li>Financial sector indicators reflect data availability and may include estimates for recent periods</li>
+                    </ul>
+                </div>
+
+                <div class="disclaimer-text">
+                    <h2>Important Disclaimer</h2>
+                    <p><strong>Data Timing:</strong> All data presented in this dashboard uses actual release dates rather than fiscal year adjustments, which may result in differences from rebased or seasonally adjusted figures published elsewhere. Users should verify current data releases from original sources for the most up-to-date information.</p>
+                    
+                    <p><strong>Investment Disclaimer:</strong> This macroeconomic dashboard is prepared for informational and analytical purposes only. The content does not constitute investment advice, recommendations, or solicitations to buy or sell any financial instruments. All data analysis is based on publicly available information and may contain errors or omissions. Users should conduct independent analysis and consult qualified financial advisors before making investment decisions.</p>
+                    
+                    <p><strong>Accuracy Limitation:</strong> While every effort has been made to ensure data accuracy, Verdant Rock and its affiliates make no warranties regarding the completeness, accuracy, or reliability of the information presented. Economic data is subject to revision by official sources, and users should refer to original statistical agencies for authoritative figures.</p>
+                    
+                    <p><strong>Forward-Looking Statements:</strong> Any projections or forward-looking statements are based on current data trends and should not be considered as guarantees of future performance. Economic conditions can change rapidly due to various domestic and international factors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
